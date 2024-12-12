@@ -5,4 +5,4 @@ routes = web.RouteTableDef()
 
 @routes.get("/", allow_head=True)
 async def root_route_handler(request):
-    return web.json_response("Advance_Bot_Light")
+    return web.json_response("Weekends Premium Bot")
