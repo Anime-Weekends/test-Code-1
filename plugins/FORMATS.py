@@ -2,8 +2,8 @@
 
 #text formatting....
 
-on_pic = "https://telegra.ph/file/5593d624d11d92bceb48e.jpg"
-off_pic = "https://telegra.ph/file/0d9e590f62b63b51d4bf9.jpg"
+on_pic = "https://envs.sh/ljg.jpg"
+off_pic = "https://envs.sh/ljf.jpg"
 files_cmd_pic = "https://envs.sh/ULG.jpg"
 autodel_cmd_pic = "https://telegra.ph/file/a64533814021b40057ccd.jpg"
 
