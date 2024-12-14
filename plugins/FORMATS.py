@@ -13,10 +13,11 @@ START_MSG = """<b>⚡ Hᴇʏ, {mention} ~
 <blockquote expandable>Piling on lie after lie, we look happy as we sing on stage no matter what struggles we might face. What a fun job!</blockquote></b>"""
 
 #Force sub message 
-FORCE_MSG = """<b><blockquote>⚠️ Hᴇʏ, {mention} ×</blockquote>
+FORCE_MSG = """<b><blockquote>❤ Aʀᴀ Aʀᴀ, {mention} ×</blockquote>
+
 Yᴏᴜ ʜᴀᴠᴇɴ'ᴛ ᴊᴏɪɴᴇᴅ {count}/{total} ᴄʜᴀɴɴᴇʟs ʏᴇᴛ. Pʟᴇᴀsᴇ ᴊᴏɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟs ᴘʀᴏᴠɪᴅᴇᴅ ʙᴇʟᴏᴡ, ᴛʜᴇɴ ᴛʀʏ ᴀɢᴀɪɴ.. !
 
-❗Fᴀᴄɪɴɢ ᴘʀᴏʙʟᴇᴍs, ᴜsᴇ: /help</b>"""
+<blockquote expandable></blockquote></b>"""
 
 CMD_TXT = """<b>🤖 𝗕𝗔𝗦𝗜𝗖 𝗔𝗗𝗠𝗜𝗡 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦 :
 
