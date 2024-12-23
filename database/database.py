@@ -300,6 +300,13 @@ class SidDataBase:
 
 
     #token
+default_verify = {
+    'is_verified': False,
+    'verified_time': 0,
+    'verify_token': "",
+    'link': ""
+}
+
     async def db_verify_status(user_id):
     user = await user_data.find_one({'_id': user_id})
     if user:
