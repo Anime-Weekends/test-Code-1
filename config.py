@@ -7,7 +7,7 @@ from logging.handlers import RotatingFileHandler
 
 
 #Bot token @Botfather, --⚠️ REQUIRED--
-TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "8132535187:AAFhR4tm_quG8nONXRj1ugDfxTio8_oSpJk")
+TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "7572009704:AAEfdc1JtQ2Obnv7R7KyfzQUOAZtwYe8Jns")
 
 #Your API ID from my.telegram.org, --⚠️ REQUIRED--
 APP_ID = int(os.environ.get("APP_ID", "28744454"))
@@ -30,7 +30,7 @@ PORT = os.environ.get("PORT", "8080")
 #Database --⚠️ REQUIRED--
 DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://jeffreymosesdj:Jeffrey@cluster2.cuiux.mongodb.net/?retryWrites=true&w=majority")
 
-DB_NAME = os.environ.get("DATABASE_NAME", "jeffy2")
+DB_NAME = os.environ.get("DATABASE_NAME", "jeffy057")
 
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
