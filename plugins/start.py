@@ -14,37 +14,64 @@ from pyrogram.enums import ParseMode, ChatAction
 from config import CUSTOM_CAPTION, OWNER_ID, PICS
 from plugins.autoDelete import auto_del_notification, delete_message
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, InputMediaPhoto
-from helper_func import banUser, is_userJoin, is_admin, subscribed, encode, decode, get_messages
+from helper_func import *
 
 
 @Bot.on_message(filters.command('start') & filters.private & ~banUser & subscribed)
-async def start_command(client: Client, message: Message): 
+async def start_command(client: Client, message: Message):
     await message.reply_chat_action(ChatAction.CHOOSE_STICKER)
     id = message.from_user.id  
-    
+
     if not await kingdb.present_user(id):
-        try: await kingdb.add_user(id)
-        except: pass
+        try:
+            await kingdb.add_user(id)
+        except:
+            pass
+
+    text = message.text
+    verify_status = await get_verify_status(id)
+
+    if USE_SHORTLINK and not U_S_E_P:
+        if id not in ADMINS:
+            if not verify_status['is_verified']:
+                token = ''.join(random.choices(string.ascii_letters + string.digits, k=10))
+                await update_verify_status(id, verify_token=token, link="")
+                link = await get_shortlink(SHORTLINK_API_URL, SHORTLINK_API_KEY, f'https://telegram.dog/{client.username}?start=verify_{token}')
                 
-    text = message.text        
-    if len(text)>7:
+                btn = [
+                    [InlineKeyboardButton("Click Here 👆", url=link)],
+                    [InlineKeyboardButton("How to open this link 👆", url=TUT_VID)]
+                ]
+                await message.reply(
+                    f"Your Ads token is expired, refresh your token and try again.\n\n"
+                    f"Token Timeout: {get_exp_time(VERIFY_EXPIRE)}\n\n"
+                    f"This is an ads token. If you pass 1 ad, you can use the bot for {get_exp_time(VERIFY_EXPIRE)} after passing the ad.",
+                    reply_markup=InlineKeyboardMarkup(btn),
+                    protect_content=False,
+                    quote=True
+                )
+                return
+
+    if len(text) > 7:
         await message.delete()
 
-        try: base64_string = text.split(" ", 1)[1]
-        except: return
-                
+        try:
+            base64_string = text.split(" ", 1)[1]
+        except:
+            return
+
         string = await decode(base64_string)
         argument = string.split("-")
-        
+
         if len(argument) == 3:
             try:
                 start = int(int(argument[1]) / abs(client.db_channel.id))
                 end = int(int(argument[2]) / abs(client.db_channel.id))
             except:
                 return
-                    
+
             if start <= end:
-                ids = range(start,end+1)
+                ids = range(start, end + 1)
             else:
                 ids = []
                 i = start
@@ -53,71 +80,96 @@ async def start_command(client: Client, message: Message):
                     i -= 1
                     if i < end:
                         break
-                            
+
         elif len(argument) == 2:
-            try: ids = [int(int(argument[1]) / abs(client.db_channel.id))]
-            except: return
-                    
+            try:
+                ids = [int(int(argument[1]) / abs(client.db_channel.id))]
+            except:
+                return
+
         last_message = None
-        await message.reply_chat_action(ChatAction.UPLOAD_DOCUMENT)  
-        
-        try: messages = await get_messages(client, ids)
-        except: return await message.reply("<b><i>Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ..!</i></b>")
-            
-        AUTO_DEL, DEL_TIMER, HIDE_CAPTION, CHNL_BTN, PROTECT_MODE = await asyncio.gather(kingdb.get_auto_delete(), kingdb.get_del_timer(), kingdb.get_hide_caption(), kingdb.get_channel_button(), kingdb.get_protect_content())   
-        if CHNL_BTN: button_name, button_link = await kingdb.get_channel_button_link()
-            
+        await message.reply_chat_action(ChatAction.UPLOAD_DOCUMENT)
+
+        try:
+            messages = await get_messages(client, ids)
+        except:
+            return await message.reply("<b><i>Something went wrong..!</i></b>")
+
+        AUTO_DEL, DEL_TIMER, HIDE_CAPTION, CHNL_BTN, PROTECT_MODE = await asyncio.gather(
+            kingdb.get_auto_delete(), kingdb.get_del_timer(),
+            kingdb.get_hide_caption(), kingdb.get_channel_button(),
+            kingdb.get_protect_content()
+        )
+        if CHNL_BTN:
+            button_name, button_link = await kingdb.get_channel_button_link()
+
         for idx, msg in enumerate(messages):
             if bool(CUSTOM_CAPTION) & bool(msg.document):
-                caption = CUSTOM_CAPTION.format(previouscaption = "" if not msg.caption else msg.caption.html, filename = msg.document.file_name)
-
+                caption = CUSTOM_CAPTION.format(
+                    previouscaption="" if not msg.caption else msg.caption.html,
+                    filename=msg.document.file_name
+                )
             elif HIDE_CAPTION and (msg.document or msg.audio):
                 caption = ""
-
             else:
                 caption = "" if not msg.caption else msg.caption.html
 
             if CHNL_BTN:
-                reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton(text=button_name, url=button_link)]]) if msg.document or msg.photo or msg.video or msg.audio else None
+                reply_markup = InlineKeyboardMarkup(
+                    [[InlineKeyboardButton(text=button_name, url=button_link)]]
+                ) if msg.document or msg.photo or msg.video or msg.audio else None
             else:
-                reply_markup = msg.reply_markup   
-                    
+                reply_markup = msg.reply_markup
+
             try:
-                copied_msg = await msg.copy(chat_id=id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_MODE)
+                copied_msg = await msg.copy(
+                    chat_id=id, caption=caption, parse_mode=ParseMode.HTML,
+                    reply_markup=reply_markup, protect_content=PROTECT_MODE
+                )
                 await asyncio.sleep(0.1)
 
                 if AUTO_DEL:
                     asyncio.create_task(delete_message(copied_msg, DEL_TIMER))
-                    if idx == len(messages) - 1: last_message = copied_msg
+                    if idx == len(messages) - 1:
+                        last_message = copied_msg
 
             except FloodWait as e:
                 await asyncio.sleep(e.x)
-                copied_msg = await msg.copy(chat_id=id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_MODE)
+                copied_msg = await msg.copy(
+                    chat_id=id, caption=caption, parse_mode=ParseMode.HTML,
+                    reply_markup=reply_markup, protect_content=PROTECT_MODE
+                )
                 await asyncio.sleep(0.1)
-                
+
                 if AUTO_DEL:
                     asyncio.create_task(delete_message(copied_msg, DEL_TIMER))
-                    if idx == len(messages) - 1: last_message = copied_msg
-                        
+                    if idx == len(messages) - 1:
+                        last_message = copied_msg
+
         if AUTO_DEL and last_message:
-                asyncio.create_task(auto_del_notification(client.username, last_message, DEL_TIMER, message.command[1]))
-                        
-    else:   
-        reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton('• Aɴɪᴍᴇ •', url='https://t.me/Anime_Weekends'), InlineKeyboardButton('• Oɴɢᴏɪɴɢ •', url='https://t.me/Ongoing_Weekends')], [InlineKeyboardButton('• Eᴍɪɴᴇɴᴄᴇ Sᴏᴄɪᴇᴛʏ •', url='https://t.me/Eminence_Society')]])
+            asyncio.create_task(auto_del_notification(client.username, last_message, DEL_TIMER, message.command[1]))
+
+    else:
+        reply_markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton('• Anime •', url='https://t.me/Anime_Weekends'),
+             InlineKeyboardButton('• Ongoing •', url='https://t.me/Ongoing_Weekends')],
+            [InlineKeyboardButton('• Eminence Society •', url='https://t.me/Eminence_Society')]
+        ])
         await message.reply_photo(
-            photo = random.choice(PICS),
-            caption = START_MSG.format(
-                first = message.from_user.first_name,
-                last = message.from_user.last_name,
-                username = None if not message.from_user.username else '@' + message.from_user.username,
-                mention = message.from_user.mention,
-                id = message.from_user.id
+            photo=random.choice(PICS),
+            caption=START_MSG.format(
+                first=message.from_user.first_name,
+                last=message.from_user.last_name,
+                username=None if not message.from_user.username else '@' + message.from_user.username,
+                mention=message.from_user.mention,
+                id=message.from_user.id
             ),
             reply_markup = reply_markup,
 	        message_effect_id=5104841245755180586 #🔥
         )
         try: await message.delete()
         except: pass
+            
 
    
 ##===================================================================================================================##
