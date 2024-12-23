@@ -279,7 +279,7 @@ async def restart_bot(client: Client, message: Message):
     #sys.exit()
 
 if USE_PAYMENT:
-    @Bot.on_message(filters.command('add_prem') & filters.private & filters.user(ADMINS))
+    @Bot.on_message(filters.command('add_prem') & filters.private & filters.user(is_admin))
     async def add_user_premium_command(client: Bot, message: Message):
         while True:
             try:
