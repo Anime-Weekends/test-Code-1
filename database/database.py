@@ -315,3 +315,6 @@ default_verify = {
 
     async def db_update_verify_status(user_id, verify):
         await user_data.update_one({'_id': user_id}, {'$set': {'verify_status': verify}})
+
+
+kingdb = SidDataBase(DB_URI, DB_NAME)
