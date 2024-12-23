@@ -307,5 +307,66 @@ class SidDataBase:
         # Delete the document with the channel_id in store_reqLink_data
         await self.store_reqLink_data.delete_one({'_id': channel_id})
 
+#token_premium
+default_verify = {
+    'is_verified': False,
+    'verified_time': 0,
+    'verify_token': "",
+    'link': ""
+}
+
+def new_user(id):
+    return {
+        '_id': id,
+        'verify_status': {
+            'is_verified': False,
+            'verified_time': "",
+            'verify_token': "",
+            'link': ""
+        }
+    }
+
+#links
+async def new_link(hash: str):
+    return {
+        'clicks' : 0,
+        'hash': hash
+    }
+
+async def gen_new_count(hash: str):
+    data = await new_link(hash)
+    await link_data.insert_one(data)
+    return
+
+async def present_hash(hash:str):
+    found = await(link_data.find_one({"hash" : hash}))
+    return bool(found)
+
+async def inc_count(hash: str):
+    data = await link_data.find_one({'hash': hash})
+    clicks = data.get('clicks')
+    await link_data.update_one({'hash': hash}, {'$set': {'clicks': clicks+1}})
+    return
+
+async def get_clicks(hash: str):
+    data = await link_data.find_one({'hash': hash})
+    clicks = data.get('clicks')
+    return clicks
+
+
+#users
+async def present_user(user_id: int):
+    found = await user_data.find_one({'_id': user_id})
+    return bool(found)
+
+async def db_verify_status(user_id):
+    user = await user_data.find_one({'_id': user_id})
+    if user:
+        return user.get('verify_status', default_verify)
+    return default_verify
+
+async def db_update_verify_status(user_id, verify):
+    await user_data.update_one({'_id': user_id}, {'$set': {'verify_status': verify}})
+
 
 kingdb = SidDataBase(DB_URI, DB_NAME)
