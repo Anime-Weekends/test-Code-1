@@ -44,8 +44,8 @@ CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", None)
 # TRUE for yes FALSE if no 
 USE_SHORTLINK = True if os.environ.get('USE_SHORTLINK', "FALSE") == "TRUE" else False 
 # only shareus service known rightnow rest you can test on your own
-SHORTLINK_API_URL = os.environ.get("SHORTLINK_API_URL", "api.shareus.io")
-SHORTLINK_API_KEY = os.environ.get("SHORTLINK_API_KEY", "")
+SHORTLINK_API_URL = os.environ.get("SHORTLINK_API_URL", "yourdestinationlink.com")
+SHORTLINK_API_KEY = os.environ.get("SHORTLINK_API_KEY", "bea2b83467261cec3b811d76a9bd84533234219a")
 #add your custom time in secs for shortlink expiration.
 # 24hr = 86400
 # 12hr = 43200
@@ -63,7 +63,7 @@ TUT_VID = os.environ.get("TUT_VID","https://t.me/How_to_Download_7x/32")
 #put TRUE if you want this feature
 USE_PAYMENT = True if (True if os.environ.get("USE_PAYMENT", "FALSE") == "TRUE" else False) and (USE_SHORTLINK) else False
 #UPI ID
-UPI_ID = os.environ.get("UPI_ID", " ")
+UPI_ID = os.environ.get("UPI_ID", "clementrajadurai@okhdfcbank")
 #UPI QR CODE IMAGE
 UPI_IMAGE_URL = os.environ.get("UPI_IMAGE_URL", "")
 #SCREENSHOT URL of ADMIN for verification of payments
