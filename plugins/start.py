@@ -154,7 +154,7 @@ async def start_command(client: Client, message: Message):
             ]
         else:
             user_btns = [
-                [InlineKeyboardButton("Verify Your Account", callback_data="verify_user")],
+                [InlineKeyboardButton("Verify Your Account", url=link)],
                 [InlineKeyboardButton("How to Verify?", url=TUT_VID)],
                 [InlineKeyboardButton("Buy Premium Plan 💎", callback_data="buy_prem")]
             ]
