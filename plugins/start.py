@@ -15,6 +15,7 @@ from config import *
 from plugins.autoDelete import auto_del_notification, delete_message
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, InputMediaPhoto
 from helper_func import *
+from plugins.advance_query import *
 
 
 @Bot.on_message(filters.command('start') & filters.private & ~banUser & subscribed)
