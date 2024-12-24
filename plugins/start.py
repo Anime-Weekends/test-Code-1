@@ -20,8 +20,9 @@ from helper_func import *
 @Bot.on_message(filters.command('start') & filters.private & ~banUser & subscribed)
 async def start_command(client: Client, message: Message):
     await message.reply_chat_action(ChatAction.CHOOSE_STICKER)
-    id = message.from_user.id  
+    id = message.from_user.id
 
+    # Check and add user if not present in the database
     if not await kingdb.present_user(id):
         try:
             await kingdb.add_user(id)
@@ -31,27 +32,30 @@ async def start_command(client: Client, message: Message):
     text = message.text
     verify_status = await get_verify_status(id)
 
+    # Handle short link and verification
     if USE_SHORTLINK and not U_S_E_P:
-        if id not in ADMINS:
+        if id not in is_admin:
             if not verify_status['is_verified']:
                 token = ''.join(random.choices(string.ascii_letters + string.digits, k=10))
                 await update_verify_status(id, verify_token=token, link="")
                 link = await get_shortlink(SHORTLINK_API_URL, SHORTLINK_API_KEY, f'https://telegram.dog/{client.username}?start=verify_{token}')
-                
+
                 btn = [
                     [InlineKeyboardButton("Click Here 👆", url=link)],
-                    [InlineKeyboardButton("How to open this link 👆", url=TUT_VID)]
+                    [InlineKeyboardButton("How to open this link 👆", url=TUT_VID)],
+                    [InlineKeyboardButton("Buy Premium Plan 💎", callback_data="buy_prem")]
                 ]
                 await message.reply(
-                    f"Your Ads token is expired, refresh your token and try again.\n\n"
+                    f"Your Ads token is expired. Refresh your token and try again.\n\n"
                     f"Token Timeout: {get_exp_time(VERIFY_EXPIRE)}\n\n"
-                    f"This is an ads token. If you pass 1 ad, you can use the bot for {get_exp_time(VERIFY_EXPIRE)} after passing the ad.",
+                    f"This is an ads token. After passing 1 ad, you can use the bot for {get_exp_time(VERIFY_EXPIRE)}.",
                     reply_markup=InlineKeyboardMarkup(btn),
                     protect_content=False,
                     quote=True
                 )
                 return
 
+    # If a start argument is provided
     if len(text) > 7:
         await message.delete()
 
@@ -70,17 +74,7 @@ async def start_command(client: Client, message: Message):
             except:
                 return
 
-            if start <= end:
-                ids = range(start, end + 1)
-            else:
-                ids = []
-                i = start
-                while True:
-                    ids.append(i)
-                    i -= 1
-                    if i < end:
-                        break
-
+            ids = range(start, end + 1) if start <= end else list(reversed(range(end, start + 1)))
         elif len(argument) == 2:
             try:
                 ids = [int(int(argument[1]) / abs(client.db_channel.id))]
@@ -95,6 +89,7 @@ async def start_command(client: Client, message: Message):
         except:
             return await message.reply("<b><i>Something went wrong..!</i></b>")
 
+        # Gather settings
         AUTO_DEL, DEL_TIMER, HIDE_CAPTION, CHNL_BTN, PROTECT_MODE = await asyncio.gather(
             kingdb.get_auto_delete(), kingdb.get_del_timer(),
             kingdb.get_hide_caption(), kingdb.get_channel_button(),
@@ -114,12 +109,9 @@ async def start_command(client: Client, message: Message):
             else:
                 caption = "" if not msg.caption else msg.caption.html
 
-            if CHNL_BTN:
-                reply_markup = InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text=button_name, url=button_link)]]
-                ) if msg.document or msg.photo or msg.video or msg.audio else None
-            else:
-                reply_markup = msg.reply_markup
+            reply_markup = InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text=button_name, url=button_link)]]
+            ) if CHNL_BTN else msg.reply_markup
 
             try:
                 copied_msg = await msg.copy(
@@ -149,12 +141,23 @@ async def start_command(client: Client, message: Message):
         if AUTO_DEL and last_message:
             asyncio.create_task(auto_del_notification(client.username, last_message, DEL_TIMER, message.command[1]))
 
+    # Default Start Message
     else:
-        reply_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton('• Anime •', url='https://t.me/Anime_Weekends'),
-             InlineKeyboardButton('• Ongoing •', url='https://t.me/Ongoing_Weekends')],
-            [InlineKeyboardButton('• Eminence Society •', url='https://t.me/Eminence_Society')]
-        ])
+        # Custom buttons based on user verification or roles
+        if (not U_S_E_P) or id in is_admin or verify_status['is_verified']:
+            user_btns = [
+                [InlineKeyboardButton("• Anime •", url="https://t.me/Anime_Weekends")],
+                [InlineKeyboardButton("• Ongoing •", url="https://t.me/Ongoing_Weekends")],
+                [InlineKeyboardButton("Buy Premium Plan 💎", callback_data="buy_prem")]
+            ]
+        else:
+            user_btns = [
+                [InlineKeyboardButton("Verify Your Account", callback_data="verify_user")],
+                [InlineKeyboardButton("How to Verify?", url=TUT_VID)],
+                [InlineKeyboardButton("Buy Premium Plan 💎", callback_data="buy_prem")]
+            ]
+
+        reply_markup = InlineKeyboardMarkup(user_btns)
         await message.reply_photo(
             photo=random.choice(PICS),
             caption=START_MSG.format(
@@ -164,12 +167,12 @@ async def start_command(client: Client, message: Message):
                 mention=message.from_user.mention,
                 id=message.from_user.id
             ),
-            reply_markup = reply_markup,
-	        message_effect_id=5104841245755180586 #🔥
+            reply_markup=reply_markup
         )
-        try: await message.delete()
-        except: pass
-            
+        try:
+            await message.delete()
+        except:
+            pass
 
    
 ##===================================================================================================================##
