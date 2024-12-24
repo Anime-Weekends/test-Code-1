@@ -10,13 +10,13 @@ default_verify = {
     'link': ""
 }
 
-    async def db_verify_status(self, user_id):
+async def db_verify_status(self, user_id):
         user = await self.user_data.find_one({'_id': user_id})
         if user:
             return user.get('verify_status', default_verify)
         return default_verify
 
-    async def db_update_verify_status(self, user_id, verify):
+async def db_update_verify_status(self, user_id, verify):
         await self.user_data.update_one({'_id': user_id}, {'$set': {'verify_status': verify}})
 
 
