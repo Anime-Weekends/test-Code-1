@@ -1,6 +1,25 @@
 import motor.motor_asyncio
 from config import DB_URI, DB_NAME
 
+
+
+default_verify = {
+    'is_verified': False,
+    'verified_time': 0,
+    'verify_token': "",
+    'link': ""
+}
+
+    async def db_verify_status(self, user_id):
+        user = await self.user_data.find_one({'_id': user_id})
+        if user:
+            return user.get('verify_status', default_verify)
+        return default_verify
+
+    async def db_update_verify_status(self, user_id, verify):
+        await self.user_data.update_one({'_id': user_id}, {'$set': {'verify_status': verify}})
+
+
 class SidDataBase:
     def __init__(self, DB_URI, DB_NAME):
         self.dbclient = motor.motor_asyncio.AsyncIOMotorClient(DB_URI)
@@ -266,21 +285,6 @@ class SidDataBase:
             upsert=True
         )
 
-default_verify = {
-    'is_verified': False,
-    'verified_time': 0,
-    'verify_token': "",
-    'link': ""
-}
-
-    async def db_verify_status(self, user_id):
-        user = await self.user_data.find_one({'_id': user_id})
-        if user:
-            return user.get('verify_status', default_verify)
-        return default_verify
-
-    async def db_update_verify_status(self, user_id, verify):
-        await self.user_data.update_one({'_id': user_id}, {'$set': {'verify_status': verify}})
 
 
 kingdb = SidDataBase(DB_URI, DB_NAME)
