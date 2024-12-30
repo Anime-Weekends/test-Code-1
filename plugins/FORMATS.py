@@ -10,7 +10,7 @@ autodel_cmd_pic = "https://telegra.ph/file/a64533814021b40057ccd.jpg"
 #start message
 START_MSG = """<b>⚡ Hᴇʏ, {mention} ~
 
-<blockquote expandable>Piling on lie after lie, we look happy as we sing on stage no matter what struggles we might face. What a fun job!</blockquote></b>"""
+<blockquote expandable>Deadpool and Wolverine (2024) English #Cam @Anime_Dist</blockquote></b>"""
 
 #Force sub message 
 FORCE_MSG = """<b><blockquote>❤ Aʀᴀ Aʀᴀ, {mention} ×</blockquote>
