@@ -2,13 +2,13 @@
 
 #text formatting....
 
-on_pic = "https://envs.sh/ljg.jpg"
-off_pic = "https://envs.sh/ljf.jpg"
+on_pic = "https://envs.sh/oot.jpg"
+off_pic = "https://envs.sh/ooF.jpg"
 files_cmd_pic = "https://envs.sh/ooh.jpg"
 autodel_cmd_pic = "https://telegra.ph/file/a64533814021b40057ccd.jpg"
 
 #start message
-START_MSG = """<b>⚡ Hᴇʏ, {mention} ~
+START_MSG = """<b>⚡ Hᴇʏ {mention} 
 
 <blockquote expandable>Piling on lie after lie, we look happy as we sing on stage no matter what struggles we might face. What a fun job!</blockquote></b>"""
 
