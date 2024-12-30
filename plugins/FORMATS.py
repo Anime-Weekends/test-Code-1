@@ -4,7 +4,7 @@
 
 on_pic = "https://envs.sh/ljg.jpg"
 off_pic = "https://envs.sh/ljf.jpg"
-files_cmd_pic = "https://envs.sh/ULG.jpg"
+files_cmd_pic = "https://envs.sh/ooh.jpg"
 autodel_cmd_pic = "https://telegra.ph/file/a64533814021b40057ccd.jpg"
 
 #start message
