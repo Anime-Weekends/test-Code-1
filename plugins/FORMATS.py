@@ -17,7 +17,7 @@ FORCE_MSG = """<b><blockquote>❤ Aʀᴀ Aʀᴀ, {mention} ×</blockquote>
 
 Yᴏᴜ ʜᴀᴠᴇɴ'ᴛ ᴊᴏɪɴᴇᴅ {count}/{total} ᴄʜᴀɴɴᴇʟs ʏᴇᴛ. Pʟᴇᴀsᴇ ᴊᴏɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟs ᴘʀᴏᴠɪᴅᴇᴅ ʙᴇʟᴏᴡ, ᴛʜᴇɴ ᴛʀʏ ᴀɢᴀɪɴ.. !
 
-<blockquote expandable>ʜᴀᴘᴘɪɴᴇss ᴀs ᴀ ᴍᴏᴛʜᴇʀ ᴀɴᴅ ʜᴀᴘᴘɪɴᴇss ᴀs ᴀɴ ɪᴅᴏʟ. ɪᴛ ᴍɪɢʜᴛ ʙᴇ ɴᴏʀᴍᴀʟ ᴛᴏ ʜᴀᴠᴇ ᴏɴʟʏ ᴏɴᴇ ʙᴜᴛ ɪ ᴡᴀɴᴛ ʙᴏᴛʜ</blockquote></b>"""
+<blockquote expandable>ᴀʙᴏʟɪsʜ ᴛʜᴇ ɪᴅᴇᴀ ᴏғ ᴡɪɴɴɪɴɢ ʙʏ ᴄʜᴀɴᴄᴇ, ᴀɴᴅ ᴄʟᴀɪᴍ ᴠɪᴄᴛᴏʀʏ ᴀs ᴀ ʟᴏɢɪᴄᴀʟ sᴇǫᴜᴇɴᴄᴇ</blockquote></b>"""
 
 CMD_TXT = """<b>🤖 𝗕𝗔𝗦𝗜𝗖 𝗔𝗗𝗠𝗜𝗡 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦 :
 
