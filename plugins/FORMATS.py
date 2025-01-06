@@ -10,12 +10,15 @@ autodel_cmd_pic = "https://envs.sh/soL.jpg"
 #start message
 START_MSG = """<b>❤️ Aʀᴀ Aʀᴀ {mention} 
 
-<blockquote expandable>I 
-T</blockquote></b>"""
+<blockquote expandable>Iᴀᴍ Aʟɪsᴀ Mɪᴋʜᴀɪʟᴏᴠɴᴀ Kᴜᴊᴏᴜ
+Sᴛᴀʏᴇᴅ ᴜᴘ ᴡᴀᴛᴄʜɪɴɢ ʟᴀᴛᴇ-ɴɪɢʜᴛ ᴀɴɪᴍᴇ ᴀɢᴀɪɴ? ʏᴏᴜ ɴᴇᴠᴇʀ ʟᴇᴀʀɴ ᴅᴏ ʏᴏᴜ, ʏᴏᴜ sᴀᴄʀɪғɪᴄᴇ sʟᴇᴇᴘ ᴛᴏ ᴡᴀᴛᴄʜ ʏᴏᴜʀ ᴀɴɪᴍᴇ ᴀɴᴅ ᴛʜᴇɴ sɴᴏᴏᴢᴇ ᴛʜʀᴏᴜɢʜ sᴄʜᴏᴏʟ. ᴡʜᴀᴛ’s ᴛʜᴇ ᴘᴏɪɴᴛ?</blockquote></b>"""
 
 #Force sub message 
 FORCE_MSG = """<b><blockquote>⚠️ Hᴇʏ, {mention} ×</blockquote>
 Yᴏᴜ ʜᴀᴠᴇɴ'ᴛ ᴊᴏɪɴᴇᴅ {count}/{total} ᴄʜᴀɴɴᴇʟs ʏᴇᴛ. Pʟᴇᴀsᴇ ᴊᴏɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟs ᴘʀᴏᴠɪᴅᴇᴅ ʙᴇʟᴏᴡ, ᴛʜᴇɴ ᴛʀʏ ᴀɢᴀɪɴ.. !
+
+<blockquote expandable>Iᴀᴍ Aʟɪsᴀ Mɪᴋʜᴀɪʟᴏᴠɴᴀ Kᴜᴊᴏᴜ
+Sᴛᴀʏᴇᴅ ᴜᴘ ᴡᴀᴛᴄʜɪɴɢ ʟᴀᴛᴇ-ɴɪɢʜᴛ ᴀɴɪᴍᴇ ᴀɢᴀɪɴ? ʏᴏᴜ ɴᴇᴠᴇʀ ʟᴇᴀʀɴ ᴅᴏ ʏᴏᴜ, ʏᴏᴜ sᴀᴄʀɪғɪᴄᴇ sʟᴇᴇᴘ ᴛᴏ ᴡᴀᴛᴄʜ ʏᴏᴜʀ ᴀɴɪᴍᴇ ᴀɴᴅ ᴛʜᴇɴ sɴᴏᴏᴢᴇ ᴛʜʀᴏᴜɢʜ sᴄʜᴏᴏʟ. ᴡʜᴀᴛ’s ᴛʜᴇ ᴘᴏɪɴᴛ?</blockquote></b>"""
 
 ❗Fᴀᴄɪɴɢ ᴘʀᴏʙʟᴇᴍs, ᴜsᴇ: /help</b>"""
 
