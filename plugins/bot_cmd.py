@@ -171,7 +171,7 @@ HELP = "https://envs.sh/N4V.jpg"
 async def help(client: Client, message: Message):
     buttons = [
         [
-            InlineKeyboardButton("Oᴡɴᴇʀ", url=f"https://t.me/Weekends_Feedback_bot), 
+            InlineKeyboardButton("Oᴡɴᴇʀ", url="https://t.me/Weekends_Feedback_bot), 
             InlineKeyboardButton("Dᴇᴠᴇʟᴏᴘᴇʀ", url="https://t.me/Weekends_Feedback_bot")
         ]
     ]
