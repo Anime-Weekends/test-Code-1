@@ -10,14 +10,12 @@ autodel_cmd_pic = "https://telegra.ph/file/a64533814021b40057ccd.jpg"
 #start message
 START_MSG = """<b>🌹 Hᴇʏ {mention} 
 
-<blockquote expandable>Piling on lie after lie, we look happy as we sing on stage no matter what struggles we might face. What a fun job!</blockquote></b>"""
+<blockquote expandable></blockquote></b>"""
 
 #Force sub message 
 FORCE_MSG = """<b><blockquote>›› Aʀᴀ Aʀᴀ {mention} ×</blockquote>
 
-Yᴏᴜ ʜᴀᴠᴇɴ'ᴛ ᴊᴏɪɴᴇᴅ {count}/{total} ᴄʜᴀɴɴᴇʟs ʏᴇᴛ. Pʟᴇᴀsᴇ ᴊᴏɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟs ᴘʀᴏᴠɪᴅᴇᴅ ʙᴇʟᴏᴡ, ᴛʜᴇɴ ᴛʀʏ ᴀɢᴀɪɴ.. !
-
-<blockquote expandable>ʜᴀᴘᴘɪɴᴇss ᴀs ᴀ ᴍᴏᴛʜᴇʀ ᴀɴᴅ ʜᴀᴘᴘɪɴᴇss ᴀs ᴀɴ ɪᴅᴏʟ. ɪᴛ ᴍɪɢʜᴛ ʙᴇ ɴᴏʀᴍᴀʟ ᴛᴏ ʜᴀᴠᴇ ᴏɴʟʏ ᴏɴᴇ ʙᴜᴛ ɪ ᴡᴀɴᴛ ʙᴏᴛʜ</blockquote></b>"""
+<blockquote expandable>ʏᴏᴜʀ ғɪʟᴇ ɪs ʀᴇᴀᴅʏ ‼️ ʟᴏᴏᴋs ʟɪᴋᴇ ʏᴏᴜ ʜᴀᴠᴇɴ'ᴛ sᴜʙsᴄʀɪʙᴇᴅ ᴛᴏ ᴏᴜʀ ᴄʜᴀɴɴᴇʟs ʏᴇᴛ {count}/{total} sᴜʙsᴄʀɪʙᴇ ɴᴏᴡ ᴛᴏ ɢᴇᴛ ʏᴏᴜʀ ғɪʟᴇs</blockquote></b>"""
 
 CMD_TXT = """<b>🤖 𝗕𝗔𝗦𝗜𝗖 𝗔𝗗𝗠𝗜𝗡 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦 :
 
