@@ -7,7 +7,7 @@ from logging.handlers import RotatingFileHandler
 
 
 #Bot token @Botfather, --⚠️ REQUIRED--
-TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "8132535187:AAEumXJdJ40YzdqLuiq3r9hPlc9389mJ8-U")
+TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "7721134759:AAEXMdyeok0zUx-pe8-AwvjO5wDD2MJGKJs")
 
 #Your API ID from my.telegram.org, --⚠️ REQUIRED--
 APP_ID = int(os.environ.get("APP_ID", "28744454"))
@@ -16,7 +16,7 @@ APP_ID = int(os.environ.get("APP_ID", "28744454"))
 API_HASH = os.environ.get("API_HASH", "debd37cef0ad1a1ce45d0be8e8c3c5e7")
 
 #Your db channel Id --⚠️ REQUIRED--
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002289759099"))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002488898677"))
 
 #OWNER ID --⚠️ REQUIRED--
 OWNER_ID = int(os.environ.get("OWNER_ID", "6266529037"))
@@ -28,9 +28,9 @@ SUPPORT_GROUP = os.environ.get("SUPPORT_GROUP", "https://t.me/Weebs_Weekends")
 PORT = os.environ.get("PORT", "8080")
 
 #Database --⚠️ REQUIRED--
-DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://jeffreymosesdj:Jeffrey@cluster2.cuiux.mongodb.net/?retryWrites=true&w=majority")
+DB_URI = os.environ.get("DATABASE_URL", "mongodb+srv://jeffymoses123:jeffymoses123@cluster0.ybmj0.mongodb.net/?retryWrites=true&w=majority")
 
-DB_NAME = os.environ.get("DATABASE_NAME", "jeffy2")
+DB_NAME = os.environ.get("DATABASE_NAME", "filestorebot")
 
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
@@ -38,7 +38,7 @@ TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 PICS = (os.environ.get("PICS", "https://envs.sh/sJX.jpg https://envs.sh/Uc0.jpg https://envs.sh/UkA.jpg https://envs.sh/Uk_.jpg https://envs.sh/Ukc.jpg https://envs.sh/UkZ.jpg https://envs.sh/UkK.jpg")).split() #Required
 
 #set your Custom Caption here, Keep None for Disable Custom Caption
-CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", "<blockquote><b>ʙʏ @Anime_Weekends</b></blockquote>")
+CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", "<blockquote><b>ʙʏ @Cultured_Weekends</b></blockquote>")
 
 
 LOG_FILE_NAME = "filesharingbot.txt"
