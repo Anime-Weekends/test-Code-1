@@ -8,12 +8,12 @@ files_cmd_pic = "https://envs.sh/ULG.jpg"
 autodel_cmd_pic = "https://telegra.ph/file/a64533814021b40057ccd.jpg"
 
 #start message
-START_MSG = """<b>⚡ Hᴇʏ, {mention} ~
+START_MSG = """<b>🌹 Hᴇʏ {mention} 
 
 <blockquote expandable>Piling on lie after lie, we look happy as we sing on stage no matter what struggles we might face. What a fun job!</blockquote></b>"""
 
 #Force sub message 
-FORCE_MSG = """<b><blockquote>❤ Aʀᴀ Aʀᴀ, {mention} ×</blockquote>
+FORCE_MSG = """<b><blockquote>›› Aʀᴀ Aʀᴀ {mention} ×</blockquote>
 
 Yᴏᴜ ʜᴀᴠᴇɴ'ᴛ ᴊᴏɪɴᴇᴅ {count}/{total} ᴄʜᴀɴɴᴇʟs ʏᴇᴛ. Pʟᴇᴀsᴇ ᴊᴏɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟs ᴘʀᴏᴠɪᴅᴇᴅ ʙᴇʟᴏᴡ, ᴛʜᴇɴ ᴛʀʏ ᴀɢᴀɪɴ.. !
 
