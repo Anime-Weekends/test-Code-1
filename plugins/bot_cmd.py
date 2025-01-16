@@ -166,17 +166,17 @@ async def user_setting_commands(client: Client, message: Message):
     await message.reply(text=USER_CMD_TXT, reply_markup=InlineKeyboardMarkup(button), quote=True)
 
     
-HELP = "https://graph.org//file/10f310dd6a7cb56ad7c0b.jpg"
+HELP = "https://envs.sh/N4V.jpg"
 @Bot.on_message(filters.command('help') & filters.private & ~banUser)
 async def help(client: Client, message: Message):
     buttons = [
         [
-            InlineKeyboardButton("💘 Oᴡɴᴇʀ", url=f"tg://openmessage?user_id={OWNER_ID}"), 
-            InlineKeyboardButton("🥰 Dᴇᴠᴇʟᴏᴘᴇʀ", url="https://t.me/JeffySama")
+            InlineKeyboardButton("Oᴡɴᴇʀ", url=f"https://t.me/Weekends_Feedback_bot), 
+            InlineKeyboardButton("Dᴇᴠᴇʟᴏᴘᴇʀ", url="https://t.me/Weekends_Feedback_bot")
         ]
     ]
     if SUPPORT_GROUP:
-        buttons.insert(0, [InlineKeyboardButton("🌐 Sᴜᴘᴘᴏʀᴛ Cʜᴀᴛ Gʀᴏᴜᴘ", url="https://t.me/Weebs_Weekends")])
+        buttons.insert(0, [InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ Cʜᴀᴛ Gʀᴏᴜᴘ", url="https://t.me/Weebs_Weekends")])
 
     try:
         reply_markup = InlineKeyboardMarkup(buttons)
