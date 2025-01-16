@@ -5,7 +5,7 @@
 on_pic = "https://envs.sh/Nvt.jpg"
 off_pic = "https://envs.sh/Nvt.jpg"
 files_cmd_pic = "https://envs.sh/NvF.jpg"
-autodel_cmd_pic = "https://telegra.ph/file/a64533814021b40057ccd.jpg"
+autodel_cmd_pic = "https://envs.sh/Nve.jpg"
 
 #start message
 START_MSG = """<b>🌹 Hᴇʏ {mention} 
